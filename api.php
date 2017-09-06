@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 $message = "";
 include "main.php";
 
@@ -22,7 +23,6 @@ if (isset($_GET['add'])) {
 
 if (isset($_GET['login'])) {
     $login_data = (array)json_decode(file_get_contents('php://input'), true);
-//    header('Content-Type: application/json');
     $response = null;
     $username = $login_data["username"];
     $password = $login_data["password"];
@@ -43,7 +43,6 @@ if (isset($_GET['login'])) {
 }
 
 if (isset($_GET['recentTags'])) {
-//    header('Content-Type: application/json');
     $data = (array)json_decode(file_get_contents('php://input'), true);
     $response = null;
     $offset = $data["offset"];
