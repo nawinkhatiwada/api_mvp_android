@@ -32,11 +32,18 @@ class Mvp_android
     /**
      * Connection configuration/constants
      */
+//    const PASSWORD = "toxic555";
+//    const HOST = "localhost";
+//    const USERNAME = "id2040020_nawinkhatiwada";
+//    const DB = "id2040020_mvp_android";
+//    const TIMEOUT = "10";
+
     const PASSWORD = "admin";
     const HOST = "localhost";
     const USERNAME = "admin";
     const DB = "mvp_android";
     const TIMEOUT = "10";
+
 
     // -------------------------------------------------------------
 
