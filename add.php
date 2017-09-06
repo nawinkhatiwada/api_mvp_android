@@ -32,13 +32,13 @@
                     <form method="POST" action="">
                         <div class="form-group">
                             <label for="usr">Title:</label>
-                            <input type="text" class="form-control" name="title">
+                            <input class="form-control" name="title">
                         </div>
                         <div class="form-group">
                             <label for="pwd">Description:</label>
                             <textarea class="form-control" name="description"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-default" name="submit">ADD</button>
+                        <button class="btn btn-default" name="submit">ADD</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -56,3 +56,4 @@
         $('#myModal').modal('show');
     });
 </script>
+
