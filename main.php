@@ -1,4 +1,5 @@
 <?php
+include "Conn.php";
 header('Content-Type: application/json');
 
 /**
@@ -14,8 +15,7 @@ class Mvp_android
     /**
      * db connection instance
      * @var conn
-     */
-    protected $_conn;
+    //     */
 
     /**
      * Success message(Connection OK!)
@@ -89,14 +89,6 @@ class Mvp_android
         $username = $credential['username'];
         $password = $credential['password'];
         $response = NULL;
-        // if ($username == null || $password == null) {
-        //  $response = array(
-        // 'status_code' => 0,
-        // 'statusMessage' => "parameter expected",
-        // 'response' => null
-        // );
-        // return json_encode($response);
-        // }
 
         $sql = "SELECT id, username,password FROM user_info where username='$username' and password='$password'";
         $result = $this->_conn->query($sql);
