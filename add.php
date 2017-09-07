@@ -1,4 +1,28 @@
 
+<?php
+include  "db_connection.php";
+$obj = new Db_connection();
+
+if (isset($_POST['submit'])) {
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    if(add($title,$description)){
+        $message="Success";
+    }else{
+        $message ="Error";
+    }
+}
+
+function add($title, $description)
+{
+    global  $obj;
+    $sql = "INSERT INTO recent_tags(title,description) VALUES('$title','$description')";
+    $result = $obj->_conn->query($sql);
+    return $result;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +50,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">
                         Fill up Tags information and submit<br/>
-                        <span style="color: red"><? $message ?></span>
+                        <span style="color: red"><?php echo isset($message) ? $message : '' ?></span>
                     </h4>
                 </div>
                 <div class="modal-body col-md-4">
@@ -57,4 +81,3 @@
         $('#myModal').modal('show');
     });
 </script>
-

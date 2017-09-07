@@ -1,25 +1,6 @@
 <?php
 header('Content-Type: application/json');
-$message = "";
 include "main.php";
-
-if (isset($_GET['add'])) {
-    if (isset($_POST['submit'])) {
-
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-
-        $obj = new Mvp_android();
-        $res = $obj->add($title, $description);
-        if ($res == 1) {
-            $message = "Added successfully !!";
-        } else {
-            $message = 'Sorry!!';
-        }
-        echo $message;
-    }
-    include "add.php";
-}
 
 if (isset($_GET['login'])) {
     $login_data = (array)json_decode(file_get_contents('php://input'), true);
@@ -27,7 +8,7 @@ if (isset($_GET['login'])) {
     $username = $login_data["username"];
     $password = $login_data["password"];
 
-    if ($username == null || $password == null) {
+    if (is_null($username) || is_null($password)) {
         $response = array(
             'statusCode' => -1,
             'statusMessage' => "Unknown Error Occurred !!!",
@@ -48,7 +29,9 @@ if (isset($_GET['recentTags'])) {
     $offset = $data["offset"];
     $limit = $data["limit"];
 
-    if (is_null($offset) || is_null($limit)) {
+    if (!is_integer($offset) || !is_integer($limit) ||
+        $offset < 0 || $limit < 0) {
+
         $response = array(
             'statusCode' => -1,
             'statusMessage' => "Unknown Error Occurred !!!",

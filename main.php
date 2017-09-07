@@ -1,5 +1,5 @@
 <?php
-include "Conn.php";
+include "db_connection.php";
 header('Content-Type: application/json');
 
 /**
@@ -12,37 +12,46 @@ header('Content-Type: application/json');
  */
 class Mvp_android
 {
-    /**
-     * db connection instance
-     * @var conn
-    //     */
+//    /**
+//     * db connection instance
+//     * @var conn
+//    //     */
+//
+    private $connection;
 
-    /**
-     * Success message(Connection OK!)
-     * @var bool|null
-     */
-    var $_success = NULL;
+    function __construct()
+    {
+        $this->connection = new Db_connection();
+    }
 
-    /**
-     * Error message(Exception/Configuration Error)
-     * @var null|string
-     */
-    var $_error = NULL;
 
-    /**
-     * Connection configuration/constants
-     */
-//    const PASSWORD = "toxic555";
+
+//    /**
+//     * Success message(Connection OK!)
+//     * @var bool|null
+//     */
+//    var $_success = NULL;
+//
+//    /**
+//     * Error message(Exception/Configuration Error)
+//     * @var null|string
+//     */
+//    var $_error = NULL;
+//
+//    /**
+//     * Connection configuration/constants
+//     */
+////    const PASSWORD = "toxic555";
+////    const HOST = "localhost";
+////    const USERNAME = "id2040020_nawinkhatiwada";
+////    const DB = "id2040020_mvp_android";
+////    const TIMEOUT = "10";
+//
+//    const PASSWORD = "admin";
 //    const HOST = "localhost";
-//    const USERNAME = "id2040020_nawinkhatiwada";
-//    const DB = "id2040020_mvp_android";
+//    const USERNAME = "admin";
+//    const DB = "mvp_android";
 //    const TIMEOUT = "10";
-
-    const PASSWORD = "admin";
-    const HOST = "localhost";
-    const USERNAME = "admin";
-    const DB = "mvp_android";
-    const TIMEOUT = "10";
 
 
     // -------------------------------------------------------------
@@ -50,19 +59,19 @@ class Mvp_android
     /**
      * constructor.
      */
-    function __construct()
-    {
-        try {
-            $this->_conn = mysqli_connect(self::HOST, self::USERNAME, self::PASSWORD, self::DB);
-            if (!$this->_conn) {
-                $this->_error = "connection error";
-            }
-            $this->_success = true;
-
-        } catch (Exception $e) {
-            $this->_error = $e->getMessage();
-        }
-    }
+//    function __construct()
+//    {
+//        try {
+//            $this->_conn = mysqli_connect(self::HOST, self::USERNAME, self::PASSWORD, self::DB);
+//            if (!$this->_conn) {
+//                $this->_error = "connection error";
+//            }
+//            $this->_success = true;
+//
+//        } catch (Exception $e) {
+//            $this->_error = $e->getMessage();
+//        }
+//    }
 
     //    -------------------------------------------------------------------
 
@@ -71,12 +80,13 @@ class Mvp_android
      * @param $description
      * @return bool|mysqli_result
      */
-    function add($title, $description)
-    {
-        $sql = "INSERT INTO recent_tags(title,description) VALUES('$title','$description')";
-        $result = $this->_conn->query($sql);
-        return $result;
-    }
+//    function add($title, $description)
+//    {
+//        $sql = "INSERT INTO recent_tags(title,description) VALUES('$title','$description')";
+//        global $connection;
+//        $result = $connection->_conn->query($sql);
+//        return $result;
+//    }
 
     //    -------------------------------------------------------------------
 
@@ -91,7 +101,7 @@ class Mvp_android
         $response = NULL;
 
         $sql = "SELECT id, username,password FROM user_info where username='$username' and password='$password'";
-        $result = $this->_conn->query($sql);
+        $result = $this->connection->_conn->query($sql);
         $row = mysqli_fetch_array($result);
         if (($row["username"] != $credential['username']) || ($row["password"] != $credential['password'])) {
             $response = array(
@@ -140,14 +150,14 @@ class Mvp_android
         if ((!$data['offset'] < 0) || (!$data['limit'] <= 0)) {
 
             $sqlItemCount = "Select count(*) from recent_tags";
-            $resultItemCount = $this->_conn->query($sqlItemCount);
+            $resultItemCount = $this->connection->_conn->query($sqlItemCount);
             $itemRow = mysqli_fetch_array($resultItemCount);
             (int)$itemCount = $itemRow[0];
 
             if ($itemCount > 0) {
 
                 $sql = "select id,title,description from recent_tags order by id asc LIMIT $limit OFFSET $offset";
-                $result = $this->_conn->query($sql);
+                $result = $this->connection->_conn->query($sql);
                 $items = array();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -195,15 +205,15 @@ class Mvp_android
     /**
      * destructor
      */
-    function __destruct()
-    {
-        try {
-            if ($this->_conn) {
-                $this->_conn->close();
-            }
-        } catch (Exception $e) {
-            echo "Error:" . $e->getMessage();
-        }
-    }
+//    function __destruct()
+//    {
+//        try {
+//            if ($this->_conn) {
+//                $this->_conn->close();
+//            }
+//        } catch (Exception $e) {
+//            echo "Error:" . $e->getMessage();
+//        }
+//    }
 
 }
