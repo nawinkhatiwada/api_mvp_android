@@ -12,11 +12,7 @@ header('Content-Type: application/json');
  */
 class Mvp_android
 {
-//    /**
-//     * db connection instance
-//     * @var conn
-//    //     */
-//
+
     private $connection;
 
     function __construct()
@@ -24,71 +20,6 @@ class Mvp_android
         $this->connection = new Db_connection();
     }
 
-
-
-//    /**
-//     * Success message(Connection OK!)
-//     * @var bool|null
-//     */
-//    var $_success = NULL;
-//
-//    /**
-//     * Error message(Exception/Configuration Error)
-//     * @var null|string
-//     */
-//    var $_error = NULL;
-//
-//    /**
-//     * Connection configuration/constants
-//     */
-////    const PASSWORD = "toxic555";
-////    const HOST = "localhost";
-////    const USERNAME = "id2040020_nawinkhatiwada";
-////    const DB = "id2040020_mvp_android";
-////    const TIMEOUT = "10";
-//
-//    const PASSWORD = "admin";
-//    const HOST = "localhost";
-//    const USERNAME = "admin";
-//    const DB = "mvp_android";
-//    const TIMEOUT = "10";
-
-
-    // -------------------------------------------------------------
-
-    /**
-     * constructor.
-     */
-//    function __construct()
-//    {
-//        try {
-//            $this->_conn = mysqli_connect(self::HOST, self::USERNAME, self::PASSWORD, self::DB);
-//            if (!$this->_conn) {
-//                $this->_error = "connection error";
-//            }
-//            $this->_success = true;
-//
-//        } catch (Exception $e) {
-//            $this->_error = $e->getMessage();
-//        }
-//    }
-
-    //    -------------------------------------------------------------------
-
-    /**
-     * @param $title
-     * @param $description
-     * @return bool|mysqli_result
-     */
-//    function add($title, $description)
-//    {
-//        $sql = "INSERT INTO recent_tags(title,description) VALUES('$title','$description')";
-//        global $connection;
-//        $result = $connection->_conn->query($sql);
-//        return $result;
-//    }
-
-    //    -------------------------------------------------------------------
 
     /**
      * @param $credential
@@ -205,15 +136,5 @@ class Mvp_android
     /**
      * destructor
      */
-//    function __destruct()
-//    {
-//        try {
-//            if ($this->_conn) {
-//                $this->_conn->close();
-//            }
-//        } catch (Exception $e) {
-//            echo "Error:" . $e->getMessage();
-//        }
-//    }
 
 }
