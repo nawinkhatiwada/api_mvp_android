@@ -6,11 +6,13 @@ $obj = new Db_connection();
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
+
     if(add($title,$description)){
         $message="Success";
     }else{
         $message ="Error";
     }
+
 }
 
 function add($title, $description)

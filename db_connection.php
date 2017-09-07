@@ -28,6 +28,7 @@ class Db_connection {
 //    const DB = "id2040020_mvp_android";
 //    const TIMEOUT = "10";
 
+
     const PASSWORD = "admin";
     const HOST = "localhost";
     const USERNAME = "admin";
