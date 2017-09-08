@@ -115,7 +115,8 @@ class Mvp_android
                     'statusCode' => 1,
                     'statusMessage' => "success",
                     'response' => [
-                        'items' =>[]
+                        'itemCount' => 0,
+                        'items' => []
                     ]
                 );
                 return json_encode($response);
